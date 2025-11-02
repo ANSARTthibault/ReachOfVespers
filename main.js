@@ -63,4 +63,29 @@
         }
 
         // Check permission on page load
+
         checkAudioPermission();
+
+        // Firebase Auth State Listener
+        // Tu dois avoir Firebase initialisé dans ton projet
+        // Cette fonction détecte si l'utilisateur est connecté
+        function updateAuthUI(user) {
+            const authLink = document.getElementById('authLink');
+            if (user && user.email) {
+                // User is signed in
+                authLink.textContent = user.email;
+                authLink.href = 'Deconnexion.html';
+                authLink.style.background = 'linear-gradient(135deg, #8a2be2 0%, #9d4edd 100%)';
+                authLink.style.webkitBackgroundClip = 'text';
+                authLink.style.webkitTextFillColor = 'transparent';
+                authLink.style.backgroundClip = 'text';
+            } else {
+                // User is signed out
+                authLink.textContent = 'Connexion';
+                authLink.href = 'Connexion.html';
+                authLink.style.background = '';
+                authLink.style.webkitBackgroundClip = '';
+                authLink.style.webkitTextFillColor = '';
+                authLink.style.backgroundClip = '';
+            }
+        }
