@@ -23,12 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const loading = document.getElementById('loading');
   const errorMessage = document.getElementById('error-message');
 
-  // Redirection si connecté sur la page de connexion
-  onAuthStateChanged(auth, (user) => {
-    if (user && window.location.pathname.includes('connexion.html')) {
-      window.location.href = 'index.html';
-    }
-  });
+  // Redirection si connecté sur la page de connexion (mais pas sur deconnexion.html)
+onAuthStateChanged(auth, (user) => {
+  const path = window.location.pathname.toLowerCase();
+  if (user && path.includes('connexion.html') && !path.includes('deconnexion.html')) {
+    window.location.href = 'index.html';
+  }
+});
 
   function showError(message) {
     if (errorMessage) {
@@ -94,3 +95,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export { app, auth, db };
+
