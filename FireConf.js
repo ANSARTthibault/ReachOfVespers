@@ -1,60 +1,94 @@
-// -- Imports (si votre HTML utilise <script type="module">) --
-// Dans ce fichier JS séparé, vous devrez importer les fonctions de Firebase
-// que vous avez déjà chargées via les CDN dans votre HTML (via l'import dans <script type="module">)
-// Cela suppose que votre 'mon-script-principal.js' est lui-même un module.
-// Si votre HTML charge les SDK via <script src="..."> sans type="module",
-// alors les objets 'firebase' sont globaux et vous n'avez pas besoin de ces imports ici.
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
-
-// -- Début du code de l'Étape 3: Initialisation de Firebase --
 const firebaseConfig = {
-  apiKey: "AIza...", // Votre clé API
+  apiKey: "AIzaSyBBpFK6tLtdcYbGo372qn3EoB-CzkCFO7w",
   authDomain: "reachofvespers-4b501.firebaseapp.com",
   projectId: "reachofvespers-4b501",
-  storageBucket: "reachofvespers-4b501.appspot.com",
-  messagingSenderId: "...",
-  appId: "1:...",
-  measurementId: "G-..." // Optionnel
+  storageBucket: "reachofvespers-4b501.firebasestorage.app",
+  messagingSenderId: "65089586909",
+  appId: "1:65089586909:web:7d524beaf3a0d3211cfd34",
+  measurementId: "G-0X8HLDCGNS"
 };
 
-// Initialisation de l'application Firebase
 const app = initializeApp(firebaseConfig);
-
-// Initialisation du service d'authentification
 const auth = getAuth(app);
-
-onAuthStateChanged(auth, (user) => {
-  if (typeof updateAuthUI === 'function') {
-    updateAuthUI(user);
-  }
-});
-// -- Fin du code de l'Étape 3 --
-
-
-// -- Début du code de l'Étape 4: Utilisation du service d'authentification --
+const db = getFirestore(app);
 const provider = new GoogleAuthProvider();
 
-function signInWithGoogle() {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      console.log("Utilisateur connecté :", result.user.displayName);
-      // Gérer la connexion réussie
-    })
-    .catch((error) => {
-      console.error("Erreur de connexion Google :", error.message);
-      // Gérer les erreurs
-    });
-}
+const googleSignInBtn = document.getElementById('google-signin-btn');
+const loading = document.getElementById('loading');
+const errorMessage = document.getElementById('error-message');
 
-// Associer la fonction à un événement de clic sur un bouton
-document.addEventListener('DOMContentLoaded', () => {
-  const signInButton = document.getElementById('btn-google-signin');
-  if (signInButton) {
-    signInButton.addEventListener('click', signInWithGoogle);
+onAuthStateChanged(auth, (user) => {
+  if (user && window.location.pathname.includes('connexion.html')) {
+    window.location.href = 'index.html';
   }
 });
-// -- Fin du code de l'Étape 4 --
+
+function showError(message) {
+  if (errorMessage) {
+    errorMessage.textContent = message;
+    errorMessage.classList.add('show');
+  }
+}
+
+function clearError() {
+  if (errorMessage) {
+    errorMessage.classList.remove('show');
+  }
+}
+
+if (googleSignInBtn) {
+  googleSignInBtn.addEventListener('click', async () => {
+    clearError();
+    googleSignInBtn.disabled = true;
+    loading.classList.add('show');
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      const userDocRef = doc(db, 'users', user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (!userDoc.exists()) {
+        await setDoc(userDocRef, {
+          username: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          createdAt: new Date(),
+          lastLogin: new Date()
+        });
+      } else {
+        await setDoc(userDocRef, {
+          lastLogin: new Date()
+        }, { merge: true });
+      }
+    } catch (error) {
+      console.error('Erreur de connexion:', error);
+      
+      let errorMsg = 'Une erreur est survenue lors de la connexion';
+      
+      if (error.code === 'auth/popup-closed-by-user') {
+        errorMsg = 'La fenêtre de connexion a été fermée';
+      } else if (error.code === 'auth/popup-blocked') {
+        errorMsg = 'Les popups sont bloquées. Autorise-les pour te connecter';
+      } else if (error.code === 'auth/cancelled-popup-request') {
+        errorMsg = 'Une autre demande de connexion est en cours';
+      } else if (error.code === 'auth/network-request-failed') {
+        errorMsg = 'Problème de connexion internet';
+      }
+      
+      showError(errorMsg);
+      googleSignInBtn.disabled = false;
+      loading.classList.remove('show');
+    }
+  });
+}
+
+export { app, auth, db };
+
 
 
