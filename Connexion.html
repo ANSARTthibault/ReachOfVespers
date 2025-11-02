@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ma Page de Connexion</title>
+</head>
+<body>
+    <!-- Votre contenu HTML, y compris un bouton pour la connexion Google -->
+    <button id="btn-google-signin">Se connecter avec Google</button>
+
+    <!-- Les SDK Firebase, avant votre script personnalisé -->
+    <script type="module">
+      // Importations des modules Firebase pour la v9 (modulaire)
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+      import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+      // C'est ICI que vous mettez le code de l'Étape 3,
+      // juste après les imports si vous voulez tout dans un seul script,
+      // OU le plus souvent, dans un fichier JS séparé que vous importez.
+      // Pour la clarté, je vais le mettre dans un fichier JS séparé, comme suggéré.
+
+      // Ne pas oublier de lier votre fichier JavaScript principal, par exemple :
+      import './FireConf.js'; // C'est votre fichier JS pour l'Étape 3 et 4
+    </script>
+
+    <!-- Si vous ne voulez pas utiliser 'type="module"' et les imports, vous pouvez faire ceci : -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script> -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script> -->
+    <!-- <script src="./mon-script-principal.js"></script> -->
+    <!-- Mais la version 'type="module"' est la plus moderne et recommandée. -->
+
+</body>
+</html>

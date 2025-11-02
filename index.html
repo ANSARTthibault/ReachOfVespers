@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reach Of Vespers</title>
+    <link rel="shortcut icon" href="logoROV.webp">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+        <div class="audio-permission-overlay" id="audioPermissionOverlay">
+        <div class="audio-permission-modal">
+            <h2>🔊 Autorisation Audio</h2>
+            <p>Pour une meilleure immersion, nous souhaitons utiliser la sortie audio.</p>
+            <div class="audio-permission-buttons">
+                <button class="audio-btn audio-btn-deny" onclick="denyAudio()">Désactiver</button>
+                <button class="audio-btn audio-btn-allow" onclick="allowAudio()">Autoriser</button>
+            </div>
+        </div>
+    </div>
+    <header>
+        <nav class="container">
+            <div class="logo" onclick="activatePortal()"><span>R</span><span>e</span><span>a</span><span>c</span><span>h</span><span> </span><span>O</span><span>f</span><span> </span><span>V</span><span>e</span><span>s</span><span>p</span><span>e</span><span>r</span><span>s</span></div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Shop</a></li>
+                <li><a href="#contact">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Plongez dans l'aventure</h1>
+            <p class="subtitle">Par le studio J-1</p>
+            <a href="#contact" class="cta-button" onclick="activatePortal()">ROV</a>
+        </div>
+    </section>
+
+    <section class="features container">
+        <div class="feature-card">
+            <div class="feature-icon">🔮</div>
+            <h3>Lore</h3>
+            <p>Découvrez le monde et les monstres de ROV</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧑‍💻</div>
+            <h3>Equipe</h3>
+            <p>Les collaborateurs du studio J-1</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛍️</div>
+            <h3>Shop</h3>
+            <p>Débloquez les meilleurs items rajoutablent dans votre jeu !</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Site développé par Thibault ANSART</p>
+        </div>
+    </footer>
+</body>
+</html>
