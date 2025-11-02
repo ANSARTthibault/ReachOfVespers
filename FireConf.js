@@ -5,7 +5,7 @@
 // Si votre HTML charge les SDK via <script src="..."> sans type="module",
 // alors les objets 'firebase' sont globaux et vous n'avez pas besoin de ces imports ici.
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 
 // -- Début du code de l'Étape 3: Initialisation de Firebase --
@@ -56,4 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 // -- Fin du code de l'Étape 4 --
+
 
