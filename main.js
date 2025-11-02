@@ -1,52 +1,10 @@
-let audioEnabled = false;
-
-// Check if audio permission was already granted
-function checkAudioPermission() {
-    const savedPermission = localStorage.getItem('audioPermission');
-    const overlay = document.getElementById('audioPermissionOverlay');
-    
-    if (!overlay) {
-        console.error('Element audioPermissionOverlay introuvable');
-        return;
-    }
-    
-    if (savedPermission === 'granted') {
-        audioEnabled = true;
-        overlay.classList.add('hidden');
-    } else if (savedPermission === 'denied') {
-        audioEnabled = false;
-        overlay.classList.add('hidden');
-    } else {
-        // Première visite, afficher la modale
-        overlay.style.display = 'flex';
-    }
-}
-
-function allowAudio() {
-    audioEnabled = true;
-    localStorage.setItem('audioPermission', 'granted');
-    const overlay = document.getElementById('audioPermissionOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-    }
-    console.log('Audio autorisé');
-}
-
-function denyAudio() {
-    audioEnabled = false;
-    localStorage.setItem('audioPermission', 'denied');
-    const overlay = document.getElementById('audioPermissionOverlay');
-    if (overlay) {
-        overlay.classList.add('hidden');
-    }
-    console.log('Audio désactivé');
-}
+let audioEnabled = true; // Audio activé par défaut
 
 function activatePortal() {
     const body = document.body;
     const ripples = document.querySelectorAll('.portal-ripple');
     
-    // Play portal sound if audio is enabled
+    // Play portal sound
     if (audioEnabled) {
         const portalSound = new Audio('elemental-magic-spell-impact-outgoing-228342.mp3');
         portalSound.volume = 0.7;
@@ -79,7 +37,7 @@ function activatePortal() {
 
 // Firebase Auth State Listener
 function updateAuthUI(user) {
-    const authLink = document.getElementById('auth-link'); // Changé de 'authLink' à 'auth-link'
+    const authLink = document.getElementById('auth-link');
     
     if (!authLink) {
         console.error('Element auth-link introuvable');
@@ -104,8 +62,3 @@ function updateAuthUI(user) {
         authLink.style.backgroundClip = '';
     }
 }
-
-// Check permission on page load
-window.addEventListener('DOMContentLoaded', () => {
-    checkAudioPermission();
-});
