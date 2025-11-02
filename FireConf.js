@@ -24,6 +24,12 @@ const app = initializeApp(firebaseConfig);
 
 // Initialisation du service d'authentification
 const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (typeof updateAuthUI === 'function') {
+    updateAuthUI(user);
+  }
+});
 // -- Fin du code de l'Étape 3 --
 
 
@@ -50,3 +56,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 // -- Fin du code de l'Étape 4 --
+
