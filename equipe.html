@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Équipe - Reach Of Vespers</title>
+    <link rel="shortcut icon" href="logoROV.webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1f 50%, #0a0a0a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            transition: all 0.4s ease;
+        }
+
+        header:hover {
+            padding: 40px 0;
+            border-bottom: 3px solid rgba(138, 43, 226, 0.6);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                rgba(138, 43, 226, 0.3) 0%, 
+                rgba(157, 78, 221, 0.8) 50%, 
+                rgba(138, 43, 226, 0.3) 100%);
+            background-size: 200% 100%;
+            animation: energyFlow 2s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        header:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes energyFlow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #8a2be2 0%, #9d4edd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        header:hover .logo span {
+            animation: letterBounce 1.8s ease infinite;
+        }
+
+        header:hover .logo span:nth-child(1) { animation-delay: 0s; }
+        header:hover .logo span:nth-child(2) { animation-delay: 0.05s; }
+        header:hover .logo span:nth-child(3) { animation-delay: 0.1s; }
+        header:hover .logo span:nth-child(4) { animation-delay: 0.15s; }
+        header:hover .logo span:nth-child(5) { animation-delay: 0.2s; }
+        header:hover .logo span:nth-child(6) { animation-delay: 0.25s; }
+        header:hover .logo span:nth-child(7) { animation-delay: 0.3s; }
+        header:hover .logo span:nth-child(8) { animation-delay: 0.35s; }
+        header:hover .logo span:nth-child(9) { animation-delay: 0.4s; }
+        header:hover .logo span:nth-child(10) { animation-delay: 0.45s; }
+        header:hover .logo span:nth-child(11) { animation-delay: 0.5s; }
+        header:hover .logo span:nth-child(12) { animation-delay: 0.55s; }
+        header:hover .logo span:nth-child(13) { animation-delay: 0.6s; }
+        header:hover .logo span:nth-child(14) { animation-delay: 0.65s; }
+        header:hover .logo span:nth-child(15) { animation-delay: 0.7s; }
+        header:hover .logo span:nth-child(16) { animation-delay: 0.75s; }
+
+        @keyframes letterBounce {
+            0% { transform: translateY(0); }
+            13.9% { transform: translateY(-15px); }
+            27.8% { transform: translateY(0); }
+            100% { transform: translateY(0); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8b8b8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #9d4edd;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8a2be2, #9d4edd);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Team Content */
+        .team-hero {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .team-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #9d4edd 50%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .team-hero .subtitle {
+            font-size: 20px;
+            color: #b8b8b8;
+            margin-bottom: 60px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+        }
+
+        .team-member {
+            background: linear-gradient(135deg, rgba(26, 10, 31, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            border-color: rgba(138, 43, 226, 0.6);
+            box-shadow: 0 20px 60px rgba(138, 43, 226, 0.3);
+        }
+
+        .team-member:hover::before {
+            opacity: 1;
+        }
+
+        .member-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            border: 3px solid rgba(138, 43, 226, 0.5);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(157, 78, 221, 0.2) 100%);
+            transition: all 0.4s ease;
+        }
+
+        .team-member:hover .member-photo {
+            border-color: rgba(138, 43, 226, 0.8);
+            box-shadow: 0 0 40px rgba(138, 43, 226, 0.5);
+            transform: scale(1.05);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-photo-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+        }
+
+        .member-name {
+            font-size: 26px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ffffff 0%, #9d4edd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .member-role {
+            font-size: 18px;
+            color: #9d4edd;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .member-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #b8b8b8;
+            margin-bottom: 25px;
+        }
+
+        .member-social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid rgba(138, 43, 226, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(138, 43, 226, 0.4);
+            border-color: rgba(138, 43, 226, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(138, 43, 226, 0.4);
+        }
+
+        .studio-info {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(26, 10, 31, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .studio-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #9d4edd;
+        }
+
+        .studio-info p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #c8c8c8;
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            margin-top: 100px;
+        }
+
+        footer p {
+            color: #808080;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span>R</span><span>e</span><span>a</span><span>c</span><span>h</span><span> </span><span>O</span><span>f</span><span> </span><span>V</span><span>e</span><span>s</span><span>p</span><span>e</span><span>r</span><span>s</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="Connexion.html" id="auth-link">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="team-hero">
+        <div class="container">
+            <h1>🎮 Le Studio J-1</h1>
+            <p class="subtitle">Les créateurs passionnés derrière Reach Of Vespers</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="studio-info">
+            <h2>Notre Mission</h2>
+            <p>
+                Studio J-1 est né de la passion de cinq créateurs déterminés à repousser les limites du jeu vidéo dans le cadre du projet de première année d'Epita.
+                Ensemble, nous transportons les joueurs dans des univers inoubliables.
+            </p>
+        </div>
+
+        <div class="team-grid">
+            <!-- Membre 1 -->
+            <div class="team-member">
+                <h3 class="member-name">Jules</h3>
+                <p class="member-role">Coordinateur de projet, Responsable du développement des IA, Responsable interface utilisateur et collisions.</p>
+            </div>
+
+            <div class="team-member">
+                <h3 class="member-name">Thomas</h3>
+                <p class="member-role">Gamedesigner, Responsable du multijoueur</p>
+            </div>
+
+
+            <div class="team-member">
+                <h3 class="member-name">Clément</h3>
+                <p class="member-role">Développeur commercial, Responsable de la création du Lore et du Tutoriel. </p>
+            </div>
+
+            <div class="team-member">
+                <h3 class="member-name">Thibault</h3>
+                <p class="member-role"> Développeur web, Responsable des puzzles et des objets collectables. </p>
+            </div>
+
+            <div class="team-member">
+                <h3 class="member-name">Tristan</h3>
+                <p class="member-role">SoundDesigner, Responsable du système d’inventaire, Aide collaborative aux IA. </p>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="module">
+        import { auth } from './FireConf.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+        
+        onAuthStateChanged(auth, (user) => {
+            const authLink = document.getElementById('auth-link');
+            if (user) {
+                authLink.textContent = user.email;
+                authLink.href = 'deconnexion.html';
+                authLink.style.background = 'linear-gradient(135deg, #8a2be2 0%, #9d4edd 100%)';
+                authLink.style.webkitBackgroundClip = 'text';
+                authLink.style.webkitTextFillColor = 'transparent';
+                authLink.style.backgroundClip = 'text';
+            } else {
+                authLink.textContent = 'Connexion';
+                authLink.href = 'Connexion.html';
+                authLink.style.background = '';
+                authLink.style.webkitBackgroundClip = '';
+                authLink.style.webkitTextFillColor = '';
+            }
+        });
+    </script>
+</body>
+</html>
