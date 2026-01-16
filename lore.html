@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lore - Reach Of Vespers</title>
+    <link rel="shortcut icon" href="logoROV.webp">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1f 50%, #0a0a0a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            transition: all 0.4s ease;
+        }
+
+        header:hover {
+            padding: 40px 0;
+            border-bottom: 3px solid rgba(138, 43, 226, 0.6);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                rgba(138, 43, 226, 0.3) 0%, 
+                rgba(157, 78, 221, 0.8) 50%, 
+                rgba(138, 43, 226, 0.3) 100%);
+            background-size: 200% 100%;
+            animation: energyFlow 2s linear infinite;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        header:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes energyFlow {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #8a2be2 0%, #9d4edd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .logo span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        header:hover .logo span {
+            animation: letterBounce 1.8s ease infinite;
+        }
+
+        header:hover .logo span:nth-child(1) { animation-delay: 0s; }
+        header:hover .logo span:nth-child(2) { animation-delay: 0.05s; }
+        header:hover .logo span:nth-child(3) { animation-delay: 0.1s; }
+        header:hover .logo span:nth-child(4) { animation-delay: 0.15s; }
+        header:hover .logo span:nth-child(5) { animation-delay: 0.2s; }
+        header:hover .logo span:nth-child(6) { animation-delay: 0.25s; }
+        header:hover .logo span:nth-child(7) { animation-delay: 0.3s; }
+        header:hover .logo span:nth-child(8) { animation-delay: 0.35s; }
+        header:hover .logo span:nth-child(9) { animation-delay: 0.4s; }
+        header:hover .logo span:nth-child(10) { animation-delay: 0.45s; }
+        header:hover .logo span:nth-child(11) { animation-delay: 0.5s; }
+        header:hover .logo span:nth-child(12) { animation-delay: 0.55s; }
+        header:hover .logo span:nth-child(13) { animation-delay: 0.6s; }
+        header:hover .logo span:nth-child(14) { animation-delay: 0.65s; }
+        header:hover .logo span:nth-child(15) { animation-delay: 0.7s; }
+        header:hover .logo span:nth-child(16) { animation-delay: 0.75s; }
+
+        @keyframes letterBounce {
+            0% { transform: translateY(0); }
+            13.9% { transform: translateY(-15px); }
+            27.8% { transform: translateY(0); }
+            100% { transform: translateY(0); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8b8b8;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #9d4edd;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8a2be2, #9d4edd);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Lore Content */
+        .lore-hero {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .lore-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #9d4edd 50%, #8a2be2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .lore-hero .subtitle {
+            font-size: 20px;
+            color: #b8b8b8;
+            margin-bottom: 60px;
+        }
+
+        .lore-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+        }
+
+        .lore-section {
+            background: linear-gradient(135deg, rgba(26, 10, 31, 0.6) 0%, rgba(10, 10, 10, 0.8) 100%);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .lore-section:hover {
+            border-color: rgba(138, 43, 226, 0.6);
+            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .lore-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #9d4edd;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lore-section h3 {
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #b8a3d1;
+        }
+
+        .lore-section p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #c8c8c8;
+            margin-bottom: 20px;
+        }
+
+        .lore-section ul, .lore-section ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        .lore-section li {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #c8c8c8;
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            font-size: 36px;
+            filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+        }
+
+        .quote {
+            border-left: 4px solid #8a2be2;
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #9d4edd;
+            font-size: 18px;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.5), transparent);
+            margin: 40px 0;
+        }
+
+        footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            margin-top: 100px;
+        }
+
+        footer p {
+            color: #808080;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo" onclick="window.location.href='index.html'">
+                <span>R</span><span>e</span><span>a</span><span>c</span><span>h</span><span> </span><span>O</span><span>f</span><span> </span><span>V</span><span>e</span><span>s</span><span>p</span><span>e</span><span>r</span><span>s</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="Connexion.html" id="auth-link">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="lore-hero">
+        <div class="container">
+            <h1>📜 Le Lore de Reach Of Vespers</h1>
+            <p class="subtitle">Plongez dans l'histoire mystérieuse d'un monde reclu...</p>
+        </div>
+    </section>
+
+    <div class="lore-content">
+        <div class="lore-section">
+            <h2><span class="icon">🌌</span>Le Monde & Histoire</h2>
+            <p>
+               Le joueur commencerait son aventure dans une chambre anodine dans la peau du personnage principal du jeu nommé Soren, sur le bureau il trouverait un livre vierge, la couverture est vide, les pages sont blanches. Intrigué par cette trouvaille et par curiosité, le joueur ouvrira le livre. Un clignement d’œil plus tard, le joueur serait projeté dans un autre univers. Il vient de se faire absorber par le livre
+            </p>
+            <p>
+                A côté de lui, un volcan, devant lui le livre dans lequel il s’écrirait comme par magie « Prend de la hauteur pour te repérer dans ce monde intriguant », il aura alors nul autre choix que d’entamer son ascension vers le sommet du volcan.
+            </p>
+        </div>
+
+
+        <div class="lore-section">
+            <h2><span class="icon">👹</span>Boss & Créatures</h2>
+            <p>Le monde de Reach Of Vespers regorge de créatures fascinantes et terrifiantes :</p>
+            <p>
+                Pas encore disponible
+            </p>
