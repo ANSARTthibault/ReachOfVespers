@@ -623,7 +623,7 @@
             3: 'pixil-frame-12.png'
         };
         var STEPS = ['reach','of','vespers'];
-        var HINTS = ['Écris "reach"...','Écris "of"...','Écris "vespers"...','Appuie sur le bouton vert !'];
+        var HINTS = ["Résout l'énigme !!!",'BIEN !','PRESQUE :)','Appuie sur le bouton vert pour valider !'];
 
         var step = 0;
         var buffer = '';
@@ -681,7 +681,7 @@
 
         document.getElementById('rovBtnGreen').addEventListener('click', function(){
             if(pendingValidation){
-                doFlash(function(){ status.textContent = 'ROV débloqué ! 🎉'; });
+                doFlash(function(){ status.textContent = 'Enigme ROV réussie ! 🎉'; });
                 pendingValidation = false;
             } else {
                 doFlash(null);
