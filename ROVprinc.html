@@ -526,7 +526,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Accueil</a></li>
                 <li><a href="#shop">Shop</a></li>
-                <li><a href="Connexion.html" id="auth-link">Connexion</a></li>
+
             </ul>
         </nav>
     </header>
@@ -693,27 +693,6 @@
     })();
     </script>
 
-    <script type="module">
-        import { auth } from './FireConf.js';
-        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-        
-        onAuthStateChanged(auth, (user) => {
-            const authLink = document.getElementById('auth-link');
-            if (user) {
-                authLink.textContent = user.email;
-                authLink.href = 'deconnexion.html';
-                authLink.style.background = 'linear-gradient(135deg, #8a2be2 0%, #9d4edd 100%)';
-                authLink.style.webkitBackgroundClip = 'text';
-                authLink.style.webkitTextFillColor = 'transparent';
-                authLink.style.backgroundClip = 'text';
-            } else {
-                authLink.textContent = 'Connexion';
-                authLink.href = 'Connexion.html';
-                authLink.style.background = '';
-                authLink.style.webkitBackgroundClip = '';
-                authLink.style.webkitTextFillColor = '';
-            }
-        });
-    </script>
+
 </body>
 </html>

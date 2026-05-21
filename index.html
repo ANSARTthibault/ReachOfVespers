@@ -7,24 +7,7 @@
     <link rel="shortcut icon" href="logoROV.webp">
     <link rel="stylesheet" href="main.css">
     <script src="main.js"></script>
-<script type="module">
-    import { auth } from './FireConf.js';
-    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        const authLink = document.getElementById('auth-link');
-        
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                authLink.textContent = user.email;
-                authLink.href = 'deconnexion.html';
-            } else {
-                authLink.textContent = 'Connexion';
-                authLink.href = 'connexion.html';
-            }
-        });
-    });
-</script>
+
 </head>
 <body>
     <header>
@@ -33,7 +16,7 @@
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="">Shop</a></li>
-                <li><a href="Connexion.html" id="auth-link">Connexion</a></li>
+
             </ul>
         </nav>
     </header>
