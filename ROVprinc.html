@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Télécharger - Reach Of Vespers</title>
+    <title>Download - Reach Of Vespers</title>
     <link rel="shortcut icon" href="logoROV.webp">
     <style>
         * {
@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahomneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1f 50%, #0a0a0a 100%);
             color: #e0e0e0;
             min-height: 100vh;
@@ -524,8 +524,7 @@
                 <span>R</span><span>e</span><span>a</span><span>c</span><span>h</span><span> </span><span>O</span><span>f</span><span> </span><span>V</span><span>e</span><span>s</span><span>p</span><span>e</span><span>r</span><span>s</span>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="#shop">Shop</a></li>
+                <li><a href="index.html">Home</a></li>
 
             </ul>
         </nav>
@@ -533,11 +532,11 @@
 
     <section class="hero-download">
         <div class="container">
-            <h1>⚔️ Télécharger le Jeu</h1>
-            <p class="subtitle">Plongez dans l'aventure épique de Reach Of Vespers</p>
-            <a href="" class="download-btn">
+            <h1>⚔️ Download the Game</h1>
+            <p class="subtitle">Dive into the epic adventure of Reach Of Vespers</p>
+            <a href="https://archive.org/download/reachofvespers_setup/reachofvespers_setup.exe" download class="download-btn">
                 <span class="icon">⬇</span>
-                Télécharger Reach Of Vespers
+                Download Reach Of Vespers
             </a>
             <p class="version-info">Version 1.0.0 | Windows 10-11 </p>
         </div>
@@ -545,13 +544,13 @@
 
     <div class="container">
         <div class="presentation">
-            <h2>À propos du jeu</h2>
+            <h2>About the Game</h2>
             <p>
-                <strong>ROV (Reach Of Vespers)</strong> est un jeu d'aventure épique qui vous plonge dans un univers sombre et mystérieux. 
-                Incarnez Soren, le héro qui est téléporté dans le monde de Reach Of Vespers...
+                <strong>ROV (Reach Of Vespers)</strong> is an epic adventure game that plunges you into a dark and mysterious world.
+                Play as Soren, the hero who is transported into the world of Reach Of Vespers...
             </p>
             <p>
-                Ce jeu à été développé dans le cadre du projet de première année d'Epita par le studio J-1.
+                This game was developed as part of the first-year project at Epita by Studio J-1.
             </p>
         </div>
 
@@ -560,18 +559,33 @@
             <div class="rapport-info">
                 <div class="rapport-icon">📄</div>
                 <div class="rapport-text">
-                    <h2>Rapport de soutenance</h2>
-                    <p>Document Word — Projet de première année Epita</p>
+                    <h2>Presentation Report</h2>
+                    <p>Word Document — Epita First-Year Project</p>
                 </div>
             </div>
-            <a href="Rapport.docx" download class="rapport-download-btn">
+            <a href="rapport-projet.pdf" download class="rapport-download-btn">
                 <span class="icon">⬇</span>
-                Télécharger le rapport
+                Download the Report
+            </a>
+        </div>
+
+        <!-- Installation Manual -->
+        <div class="rapport-bubble">
+            <div class="rapport-info">
+                <div class="rapport-icon">📋</div>
+                <div class="rapport-text">
+                    <h2>Installation Manual</h2>
+                    <p>PDF Document — Setup Guide</p>
+                </div>
+            </div>
+            <a href="dossier_exploit_j-1.pdf" download class="rapport-download-btn">
+                <span class="icon">⬇</span>
+                Download the Manual
             </a>
         </div>
 
         <div class="resources">
-            <h2>Liens & Ressources :</h2>
+            <h2>Links & Resources:</h2>
             <ul class="resources-list">
                 <li>
                     <span class="resource-name">Pygame</span>
@@ -593,17 +607,25 @@
                     <span class="resource-name">Pixabay</span>
                     <a href="https://pixabay.com" target="_blank" class="resource-link">pixabay.com</a>
                 </li>
+                <li>
+                    <span class="resource-name">Pyscroll</span>
+                    <a href="https://www.pygame.org/project-pyscroll-2892-.html" target="_blank" class="resource-link">pygame.org/project-pyscroll</a>
+                </li>
+                <li>
+                    <span class="resource-name">Craftpix</span>
+                    <a href="https://craftpix.net/?srsltid=AfmBOoq_V90HPNJ_huTBLBLchz-prTjFDo6WZTh8RtC9Bf2bIbhByXPu" target="_blank" class="resource-link">craftpix.net</a>
+                </li>
             </ul>
         </div>
         <!-- Bulle Jeu -->
         <div class="game-section">
-            <h2>🎮 Mini-jeu</h2>
+            <h2>🎮 Mini-game</h2>
             <div class="game-frame-wrap">
                 <div class="game-frame" id="rovGameFrame">
                     <img id="rovGameImg" src="pixil-frame-9.png" alt="ROV" />
                 </div>
             </div>
-            <div class="game-status" id="rovGameStatus">Résous notre énigme !</div>
+            <div class="game-status" id="rovGameStatus">Type the name of the game.</div>
             <div class="game-btns-row">
                 <div class="game-btn-left">
                     <div class="game-dot-btn red" id="rovBtnRed"></div>
@@ -623,7 +645,7 @@
             3: 'pixil-frame-12.png'
         };
         var STEPS = ['reach','of','vespers'];
-        var HINTS = ['Écris "Résous notre énigme !','BRAVO !','PRESQUE !!!','Enigme ROV résoulue ! 🥳'];
+        var HINTS = ['Type the name of the game.','Keep going...','Almost...','Unlocked! 🎮'];
 
         var step = 0;
         var buffer = '';
@@ -681,7 +703,7 @@
 
         document.getElementById('rovBtnGreen').addEventListener('click', function(){
             if(pendingValidation){
-                doFlash(function(){ status.textContent = 'Enigme ROV résoulue ! 🥳'; });
+                doFlash(function(){ status.textContent = 'Unlocked! 🎮'; });
                 pendingValidation = false;
             } else {
                 doFlash(null);
